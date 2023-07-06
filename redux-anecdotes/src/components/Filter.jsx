@@ -1,8 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setFilter } from '../reducers/filterReducer';
 
 const Filter = () => {
-  const anecdotes = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleChange = (event) => {

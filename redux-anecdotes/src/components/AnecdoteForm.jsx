@@ -1,15 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addNewAnecdote } from '../reducers/anecdoteReducer';
+import { createNewAnecdote } from '../reducers/anecdoteReducer';
+import { setNotificationAsync } from '../reducers/notificationReducer';
 
 export const AnecdoteForm = () => {
   const dispatch = useDispatch();
 
-  const addAnecdote = (event) => {
+  const addAnecdote = async (event) => {
     event.preventDefault();
     const content = event.target.anecdote.value;
     event.target.anecdote.value = '';
-    dispatch(addNewAnecdote(content));
+
+    dispatch(createNewAnecdote(content));
+    dispatch(setNotificationAsync(`New anecdote created ${content}`, 10));
   };
   return (
     <div>
